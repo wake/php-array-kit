@@ -1,12 +1,12 @@
 {
-  "name": "wakefield/php-array-kit",
+  "name": "wakegs/php-array-kit",
   "type": "library",
   "description": "Simple functions help using array in php",
   "keywords": [],
-  "homepage": "https://github.com/wakefield/php-array-kit",
+  "homepage": "https://github.com/wakegs/php-array-kit",
   "support": {
-    "issues": "https://github.com/wakefield/php-array-kit/issues",
-    "source": "https://github.com/wakefield/php-array-kit"
+    "issues": "https://github.com/wakegs/php-array-kit/issues",
+    "source": "https://github.com/wakegs/php-array-kit"
   },
   "authors": [
     {
