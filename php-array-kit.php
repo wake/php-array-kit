@@ -20,7 +20,7 @@
 
   /**
    *
-   * 從陣列提取 key 做為 index
+   * 從陣列提取 key(s) 做為 index
    *
    */
   function keyi ($array, $key, $gather = false) {
@@ -28,18 +28,32 @@
     if (! $array)
       return false;
 
-    $ret = Array ();
+    $ret = array ();
+    $key = (array) $key;
 
     reset ($array);
 
-    if (is_array ($array[0])) {
-      while (list (, $v) = each ($array))
-        ! isset ($v[$key]) or (! $gather ? $ret[$v[$key]] = $v : ($gather === true ? $ret[$v[$key]][] = $v : $ret[$v[$key]][$gather] = $v));
+    $_key = array_shift ($key);
+
+    if (isset ($array[0])) {
+
+      if (is_array ($array[0])) {
+        while (list (, $v) = each ($array))
+          ! isset ($v[$_key]) or (! $gather ? $ret[$v[$_key]] = $v : ($gather === true ? $ret[$v[$_key]][] = $v : $ret[$v[$_key]][$gather] = $v));
+      }
+
+      else if (is_object ($array[0])) {
+        while (list (, $v) = each ($array))
+          ! isset ($v->$_key) or (! $gather ? $ret[$v->$_key] = $v : ($gather === true ? $ret[$v->$_key][] = $v : $ret[$v->$_key][$gather] = $v));
+      }
     }
 
-    else if (is_object ($array[0])) {
-      while (list (, $v) = each ($array))
-        ! isset ($v->$key) or (! $gather ? $ret[$v->$key] = $v : ($gather === true ? $ret[$v->$key][] = $v : $ret[$v->$key][$gather] = $v));
+    else
+      $ret[$array[$_key]] = $array;
+
+    if (isset ($key[0])) {
+      while (list ($k, $r) = each ($ret))
+        $ret[$k] = keyi ($r, $key, $gather);
     }
 
     return $ret;
