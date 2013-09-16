@@ -97,3 +97,54 @@
       return $ret;
     }
   }
+
+
+  /**
+   *
+   * 將 array 所有 key 加上 prefix string
+   *
+   */
+  function sticky ($array, $prefix, $ucfirst = false) {
+
+    if (! $array)
+      return false;
+
+    $ret = Array ();
+
+    foreach ($array as $_k => $_v) {
+
+      ! $ucfirst or $_k = ucfirst ($_k);
+
+      $ret["$prefix$_k"] = $_v;
+    }
+
+    return $ret;
+  }
+
+
+  /**
+   *
+   * 將 array 所有 key 移除 prefix string
+   *
+   */
+  function tear ($array, $prefix, $lcfirst = false) {
+
+    if (! $array)
+      return false;
+
+    $idx = strlen ($prefix);
+    $ret = Array ();
+
+    foreach ($array as $_k => $_v) {
+
+      if ($prefix == substr ($_k, 0, $idx)) {
+        $k = substr ($_k, $idx);
+        $ret[! $lcfirst ? $k : lcfirst ($k)] = $_v;
+      }
+
+      else
+        $ret[$_k] = $_v;
+    }
+
+    return $ret;
+  }
