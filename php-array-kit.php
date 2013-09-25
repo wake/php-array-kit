@@ -9,7 +9,7 @@
   function walk ($array, $func, $para = NULL) {
 
     if (! $array)
-      return false;
+      return ! is_array ($array) ? false : array ();
 
     if (array_walk ($array, $func, $para))
       return $array;
@@ -26,7 +26,7 @@
   function keyi ($array, $key, $gather = false) {
 
     if (! $array)
-      return false;
+      return ! is_array ($array) ? false : array ();
 
     $ret = array ();
     $key = (array) $key;
@@ -68,7 +68,7 @@
   function dig ($array, $key = false, $deep = 1) {
 
     if (! $array)
-      return false;
+      return ! is_array ($array) ? false : array ();
 
     $ret = Array ();
     $mod = is_object (current ($array)) ? 'o' : 'a';
@@ -107,7 +107,7 @@
   function sticky ($array, $prefix, $ucfirst = false) {
 
     if (! $array)
-      return false;
+      return ! is_array ($array) ? false : array ();
 
     $ret = Array ();
 
@@ -130,7 +130,7 @@
   function tear ($array, $prefix, $lcfirst = false) {
 
     if (! $array)
-      return false;
+      return ! is_array ($array) ? false : array ();
 
     $idx = strlen ($prefix);
     $ret = Array ();
