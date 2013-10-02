@@ -75,6 +75,8 @@
 
     if ($deep == 1) {
 
+      reset ($array);
+
       while (list ($k, $v) = each ($array)) {
 
         if ($key && $mod == 'a' && isset ($v[$key]))
