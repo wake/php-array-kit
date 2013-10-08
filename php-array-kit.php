@@ -39,12 +39,12 @@
 
       if (is_array ($array[0])) {
         while (list (, $v) = each ($array))
-          ! isset ($v[$_key]) or (! $gather ? $ret[$v[$_key]] = $v : ($gather === true ? $ret[$v[$_key]][] = $v : $ret[$v[$_key]][$gather] = $v));
+          ! isset ($v[$_key]) or (! $gather ? (! isset ($ret[$v[$_key]]) ? $ret[$v[$_key]] = $v : null) : ($gather === true ? $ret[$v[$_key]][] = $v : $ret[$v[$_key]][$gather] = $v));
       }
 
       else if (is_object ($array[0])) {
         while (list (, $v) = each ($array))
-          ! isset ($v->$_key) or (! $gather ? $ret[$v->$_key] = $v : ($gather === true ? $ret[$v->$_key][] = $v : $ret[$v->$_key][$gather] = $v));
+          ! isset ($v->$_key) or (! $gather ? (! isset ($ret[$v->$_key]) ? $ret[$v->$_key] = $v : null) : ($gather === true ? $ret[$v->$_key][] = $v : $ret[$v->$_key][$gather] = $v));
       }
     }
 
