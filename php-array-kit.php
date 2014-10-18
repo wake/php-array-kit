@@ -150,3 +150,20 @@
 
     return $ret;
   }
+
+
+  /**
+   *
+   * 將 object 轉成 array
+   *
+   */
+  function otoa ($val) {
+
+    if (is_object ($val))
+      $val = get_object_vars ($val);
+
+    if (is_array ($val))
+      return array_map (__FUNCTION__, $val);
+
+    return $val;
+  }
