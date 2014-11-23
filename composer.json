@@ -1,21 +1,22 @@
 {
   "name": "wake/php-array-kit",
-  "type": "library",
   "description": "Simple functions help using array in php",
-  "keywords": [],
+  "version": "1.0.0-pre",
+  "type": "library",
+  "keywords": ["array", "toolkit"],
   "homepage": "https://github.com/wake/php-array-kit",
-  "support": {
-    "issues": "https://github.com/wake/php-array-kit/issues",
-    "source": "https://github.com/wake/php-array-kit"
-  },
+  "license": "MIT",
   "authors": [
     {
       "name": "Wake Liu",
       "email": "wake.gs@gmail.com",
-      "homepage": "http://wake.gs",
-      "role": "Developer"
+      "homepage": "http://wake.gs"
     }
   ],
+  "support": {
+    "issues": "https://github.com/wake/php-array-kit/issues",
+    "source": "https://github.com/wake/php-array-kit"
+  },
   "require": {
     "php": ">=5.2.0"
   },
