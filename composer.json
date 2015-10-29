@@ -1,7 +1,7 @@
 {
   "name": "wake/php-array-kit",
   "description": "Simple functions help using array in php",
-  "version": "v0.1.0",
+  "version": "v0.2.0",
   "type": "library",
   "keywords": ["array", "toolkit"],
   "homepage": "https://github.com/wake/php-array-kit",
