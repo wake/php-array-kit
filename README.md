@@ -4,7 +4,7 @@ Simple functions help using array in php.
 
 ## Usage
 
-`keyi ($array, $key, $gather = false)`
+### `keyi ($array, $key, $gather = false)`
 
 Split array base on key
 
@@ -63,7 +63,7 @@ Split array base on key
 
 ```
 
-`dig ($array, $key = false, $deep = 1)`
+### `dig ($array, $key = false, $deep = 1)`
 
 Dig value from array
 
@@ -115,7 +115,7 @@ Dig value from array
 
 ```
 
-`otoa ($object)`
+### `otoa ($object)`
 
 Object to array, get array from object values.
 
