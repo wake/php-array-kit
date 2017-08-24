@@ -3,24 +3,7 @@
 
   /**
    *
-   * array_walk 的變形
-   *
-   */
-  function walk ($array, $func, $para = NULL) {
-
-    if (! $array)
-      return ! is_array ($array) ? false : array ();
-
-    if (array_walk ($array, $func, $para))
-      return $array;
-
-    return false;
-  }
-
-
-  /**
-   *
-   * 從陣列提取 key(s) 做為 index
+   * Split array base on key
    *
    */
   function keyi ($array, $key, $gather = false) {
@@ -62,7 +45,7 @@
 
   /**
    *
-   * 掘出陣列裡層的 $key-array
+   * Dig $key - value from array
    *
    */
   function dig ($array, $key = false, $deep = 1) {
@@ -103,58 +86,7 @@
 
   /**
    *
-   * 將 array 所有 key 加上 prefix string
-   *
-   */
-  function sticky ($array, $prefix, $ucfirst = false) {
-
-    if (! $array)
-      return ! is_array ($array) ? false : array ();
-
-    $ret = Array ();
-
-    foreach ($array as $_k => $_v) {
-
-      ! $ucfirst or $_k = ucfirst ($_k);
-
-      $ret["$prefix$_k"] = $_v;
-    }
-
-    return $ret;
-  }
-
-
-  /**
-   *
-   * 將 array 所有 key 移除 prefix string
-   *
-   */
-  function tear ($array, $prefix, $lcfirst = false) {
-
-    if (! $array)
-      return ! is_array ($array) ? false : array ();
-
-    $idx = strlen ($prefix);
-    $ret = Array ();
-
-    foreach ($array as $_k => $_v) {
-
-      if ($prefix == substr ($_k, 0, $idx)) {
-        $k = substr ($_k, $idx);
-        $ret[! $lcfirst ? $k : lcfirst ($k)] = $_v;
-      }
-
-      else
-        $ret[$_k] = $_v;
-    }
-
-    return $ret;
-  }
-
-
-  /**
-   *
-   * 將 object 轉成 array
+   * Object to array
    *
    */
   function otoa ($val) {
@@ -166,60 +98,4 @@
       return array_map (__FUNCTION__, $val);
 
     return $val;
-  }
-
-
-
-  /**
-   *
-   * 循環比對 Array 是否相同
-   *
-   */
-  function difa ($a1, $a2, $assoc = true) {
-
-    $ret = array ();
-
-    foreach ($a1 as $k => $v) {
-      if (is_array ($v)) {
-
-        if (isset ($a2[$k])) {
-
-          if (! is_array ($a2[$k]))
-            $ret[$k] = $v;
-
-          else {
-
-            $diff = difa ($a1[$k], $a2[$k], $assoc);
-
-            if (! empty ($diff))
-              $ret[$k] = $diff;            
-          }
-
-          unset ($a2[$k]);
-        }
-
-        else
-          $ret[$k] = $v;
-
-        unset ($a1[$k]);
-      }
-    }
-
-    foreach ($a2 as $k => $v) {
-      if (is_array ($v)) {
-
-        if (! isset ($a1[$k]))
-          $ret[$k] = $v;
-
-        unset ($a2[$k]);
-      }
-    }
-
-    if ($assoc)
-      $ret = array_merge (array_diff_assoc ($a1, $a2), $ret);
-
-    else
-      $ret = array_merge (array_diff ($a1, $a2), $ret);
-
-    return $ret;
   }
