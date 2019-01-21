@@ -21,12 +21,12 @@
     if (isset ($array[0])) {
 
       if (is_array ($array[0])) {
-        while (list (, $v) = each ($array))
+        foreach ($array as $v)
           ! isset ($v[$_key]) or (! $gather ? (! isset ($ret[$v[$_key]]) ? $ret[$v[$_key]] = $v : null) : ($gather === true ? $ret[$v[$_key]][] = $v : $ret[$v[$_key]][$gather] = $v));
       }
 
       else if (is_object ($array[0])) {
-        while (list (, $v) = each ($array))
+        foreach ($array as $v)
           ! isset ($v->$_key) or (! $gather ? (! isset ($ret[$v->$_key]) ? $ret[$v->$_key] = $v : null) : ($gather === true ? $ret[$v->$_key][] = $v : $ret[$v->$_key][$gather] = $v));
       }
     }
@@ -35,7 +35,7 @@
       $ret[$array[$_key]] = $array;
 
     if (isset ($key[0])) {
-      while (list ($k, $r) = each ($ret))
+      foreach ($array as $k => $r)
         $ret[$k] = keyi ($r, $key, $gather);
     }
 
@@ -60,7 +60,7 @@
 
       reset ($array);
 
-      while (list ($k, $v) = each ($array)) {
+      foreach ($array as $k => $v) {
 
         if ($key && $mod == 'a' && isset ($v[$key]))
           $ret[] = $v[$key];
@@ -76,7 +76,7 @@
     }
 
     else {
-      while (list ($k, $v) = each ($array))
+      foreach ($array as $k => $v)
         $ret = array_merge ($ret, dig ($v, $key, $deep - 1));
 
       return $ret;
