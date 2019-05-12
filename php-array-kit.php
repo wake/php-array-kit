@@ -35,7 +35,7 @@
       $ret[$array[$_key]] = $array;
 
     if (isset ($key[0])) {
-      foreach ($array as $k => $r)
+      foreach ($ret as $k => $r)
         $ret[$k] = keyi ($r, $key, $gather);
     }
 
